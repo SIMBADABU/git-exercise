@@ -13,6 +13,12 @@ class Point2D:
         self._coordinates[1] += other._coordinates[1]
         return Point2D(self._coordinates[0],self._coordinates[1])
 
+    def __isub__(self, other:Vector) -> Point2D:
+        assert len(self._coordinates._coordinates) == len(other._coordinates)
+        self._coordinates[0] -= other._coordinates[0]
+        self._coordinates[1] -= other._coordinates[1]
+        return Point2D(self._coordinates[0], self._coordinates[1])  
+
     @property
     def x(self) -> float:
         return self._coordinates[0]
