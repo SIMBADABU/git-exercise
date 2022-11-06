@@ -6,6 +6,13 @@ class Point2D:
     def __init__(self, x: float, y: float) -> None:
         self._coordinates = Vector([x, y])
 
+    def __iadd__(self, other: Vector) -> Point2D:
+        # assert len(self._coordinates) == len(other._coordinates)
+        assert len(self._coordinates._coordinates) == len(other._coordinates)
+        self._coordinates[0] += other._coordinates[0]
+        self._coordinates[1] += other._coordinates[1]
+        return Point2D(self._coordinates[0],self._coordinates[1])
+
     @property
     def x(self) -> float:
         return self._coordinates[0]
@@ -35,3 +42,5 @@ def test_point_vector_subtraction() -> None:
     point -= Vector([1.1, 2.2])
     assert isclose(point.x, -0.1)
     assert isclose(point.y, -0.2)
+
+test_point_vector_addition()
