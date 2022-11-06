@@ -31,16 +31,19 @@ class Rectangle:
         else:
             return False
 
-    def contains(self, point: Point2D) -> bool:
+    def contains(self, point: Point2D, tolerance = None) -> bool:
         # Task A: remove duplication by defining a function
         #         that checks if a value is within an interval
         #         and reuse that here.
-        ll_px = point.x - self._lower_left.x
-        ll_py = point.y - self._lower_left.y
-
+        if tolerance == None : 
+            ll_px = point.x - self._lower_left.x
+            ll_py = point.y - self._lower_left.y
+        else:    
+            ll_px = point.x - self._lower_left.x + tolerance
+            ll_py = point.y - self._lower_left.y + tolerance
+    
         return self.is_in_interval(ll_px,ll_py)
 
-   
 
     def _is_idx_on_upper_edge(self, i: int) -> bool:
         return i in [2, 3]
